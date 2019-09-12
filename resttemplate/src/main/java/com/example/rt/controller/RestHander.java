@@ -2,6 +2,7 @@ package com.example.rt.controller;
 
 
 import com.example.rt.entity.Student;
+import com.example.rt.service.ClusterInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,18 @@ public class RestHander {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private ClusterInfoService clusterInfoService;
+
     @GetMapping("findAll")
     public Collection<Student> findAll(){
 //        return restTemplate.getForObject("http://localhost:1235/student/findAll", Collection.class);
         return restTemplate.getForEntity("http://localhost:1235/student/findAll", Collection.class).getBody();
+    }
+
+    @GetMapping("/ttt")
+    public Object list() {
+        return clusterInfoService.list();
     }
 
 }
