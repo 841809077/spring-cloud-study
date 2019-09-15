@@ -79,13 +79,13 @@ public class ClusterInfoDO {
     /** 厂商 */
     private String manufacturer;
 
-    public  String getUrl(){
-        return "http://" + getIpAddr() +"/business/api";
-    }
-
-    public String getAddress(){
-        // http://58.246.54.94:11181/
-        return "http://" + getIpAddr() + "/";
-    }
+//    public  String getUrl(){
+//        return "http://" + getIpAddr() +"/business/api";
+//    }
+//
+//    public String getAddress(){
+//        // http://58.246.54.94:11181/
+//        return "http://" + getIpAddr() + "/";
+//    }
 
 }

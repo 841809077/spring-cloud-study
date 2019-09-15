@@ -1,7 +1,10 @@
 package com.example.rt.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.rt.entity.ClusterInfoDO;
 import com.example.rt.entity.Student;
+import com.example.rt.mapper.ClusterInfoMapper;
 import com.example.rt.service.ClusterInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,9 @@ public class RestHander {
     @Autowired
     private ClusterInfoService clusterInfoService;
 
+    @Autowired
+    private ClusterInfoMapper clusterInfoMapper;
+
     @GetMapping("findAll")
     public Collection<Student> findAll(){
 //        return restTemplate.getForObject("http://localhost:1235/student/findAll", Collection.class);
@@ -30,6 +36,14 @@ public class RestHander {
     @GetMapping("/ttt")
     public Object list() {
         return clusterInfoService.list();
+    }
+
+    @GetMapping("selectAll")
+    public Collection<ClusterInfoDO> selectById(){
+        QueryWrapper<ClusterInfoDO> queryWrapper = new QueryWrapper<ClusterInfoDO>();
+//        queryWrapper.eq("name", "1");
+        queryWrapper.lambda().eq(ClusterInfoDO::getIpAddr, "1");
+        return clusterInfoMapper.selectList(queryWrapper);
     }
 
 }

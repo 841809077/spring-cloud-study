@@ -10,4 +10,9 @@ spring:
     password: mycat123
     url: jdbc:mysql://pigx-mysql:3306/pigxx?characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
 
-
+logging:
+  level:
+    com:
+      example:
+        rt:
+          mapper: debug
